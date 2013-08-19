@@ -217,7 +217,9 @@ class MenuBuilderHelper extends AppHelper {
 		}
 
 		$check = false;
-		if (isset($item['url'])) {
+		if (isset($item['active'])) {
+			$check = (bool) $item['active'];
+		} else if (isset($item['url'])) {
 			if ($item['partialMatch']) {
 				$check = (strpos(Router::normalize($this->here), Router::normalize($item['url']))===0);
 			} else {
