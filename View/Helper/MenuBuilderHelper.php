@@ -224,7 +224,7 @@ class MenuBuilderHelper extends AppHelper {
 		$check = false;
 		if (isset($item['url'])) {
 			if ($item['partialMatch']) {
-				$check = (strpos(Router::normalize($this->request->here), Router::normalize($item['url'])) === 0);
+				$check = preg_match('#^' . Router::normalize($item['url']) . '(/.*)?$#', Router::normalize($this->request->here));
 			} else {
 				$check = Router::normalize($this->request->here) === Router::normalize($item['url']);
 			}
