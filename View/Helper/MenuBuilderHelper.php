@@ -280,6 +280,10 @@ class MenuBuilderHelper extends AppHelper {
 			}
 
 			$urlOptions = array('title' => trim(html_entity_decode(strip_tags($item['title'])), chr(0xC2).chr(0xA0)));
+			if (array_key_exists('titleAttr', $item)) {
+				$urlOptions['title'] = $item['titleAttr'];
+			}
+
 			if (!empty($item['target'])) {
 				$urlOptions['target'] = $item['target'];
 			}
